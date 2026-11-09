@@ -3,3 +3,7 @@
 logs/
 # Credenciales
 *.zip
+
+# Salidas de scripts/check.sh
+check.json
+.check/
