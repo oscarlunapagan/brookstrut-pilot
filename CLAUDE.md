@@ -39,7 +39,8 @@ La app 100 está en el workspace `WRK`. Para ver tus cambios en `WRK_DEV`, despl
 
 ## Convenciones
 
-- **Nombres** de objetos en inglés, con el prefijo `oow_demo_` como el resto del esquema. **Comentarios** en español.
+- **Nombres** de objetos en inglés, con el prefijo `oow_demo_` como el resto del esquema.
+- **Comentarios** en español, que expliquen el porqué de cada bloque y citen el RF que implementa. La especificación de cada paquete documenta qué hace cada procedimiento y sus casos límite. No comentes lo obvio.
 - **PL/SQL** en minúsculas, como el código nuevo de este repositorio. Variables con bind, nunca concatenando valores en SQL dinámico. Nada de `when others then null`.
 - **La lógica de negocio va en paquetes,** no en los procesos de las páginas. Una página llama al paquete.
 - **El documento de requisitos manda** sobre estas convenciones si dice algo distinto.
