@@ -35,7 +35,7 @@ La app 100 está en el workspace `WRK`. Para ver tus cambios en `WRK_DEV`, despl
 | Borrar un objeto de código | Una migración con `drop`, y quitar su archivo y su línea de `db/code.sql` |
 | La app | Los archivos APEXlang de `apex/f100/`. Comprueba la sintaxis con `apex validate -input apex/f100` dentro de SQLcl |
 
-**No modifiques** `scripts/`, `db/env/`, `db/changelog.xml`, `db/apex.sql` ni `apex/f100/deployments/`.
+**No modifiques** `scripts/`, `db/env/`, `db/changelog.xml`, `db/apex.sql` ni `apex/f100/deployments/`. Tampoco `docs/functional-analysis.md` ni los documentos de requisitos: los mantiene quien los aprueba. La única excepción es el plan del evolutivo, que escribes tú.
 
 ## Convenciones
 
@@ -81,5 +81,3 @@ La app 100 está en el workspace `WRK`. Para ver tus cambios en `WRK_DEV`, despl
 ## Si algo no está claro
 
 Toma la interpretación más razonable según los requisitos y el análisis funcional, y sigue. Anota cada decisión en el plan del evolutivo (`docs/requirements/EV-nnn-plan.md`) y en el PR. Para solo si no puedes avanzar sin una respuesta.
-
-**Al terminar, actualiza `docs/functional-analysis.md`:** añade los RF del evolutivo al catálogo y refleja los cambios en los casos de uso, el diccionario de datos y los formularios afectados.

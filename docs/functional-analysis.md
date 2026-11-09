@@ -67,6 +67,7 @@ La interfaz está en inglés. Los nombres de páginas de este documento son los 
 | Código | Requisito funcional | Versión | Prioridad |
 |---|---|---|---|
 | RF000 | Requisitos iniciales: la aplicación tal como la instala la galería de APEX 26.1 | 26.1.1 | - |
+| RF001 | Tiendas: conservar precios y ofertas al guardar el inventario | EV-001 | Alta |
 
 Cada evolutivo añade aquí sus requisitos, con el código que le asigne su documento de requisitos.
 
@@ -143,14 +144,14 @@ Se describen los casos de uso que mantienen datos o tienen reglas. Los de consul
 - N2. El sistema muestra el formulario vacío. Ver [formulario de tienda](#721-formulario-de-tienda-página-7).
 - N3. El usuario informa los datos, selecciona los productos que vende la tienda y pulsa "Create".
 - N4. El sistema valida los datos obligatorios.
-- N5. El sistema crea la tienda y su inventario, y vuelve a la página 6.
+- N5. El sistema crea la tienda y su inventario con los productos seleccionados, sin precio de tienda ni oferta, y vuelve a la página 6.
 
 *Actualización*
 
 - A1. Se aplica el flujo de consulta, de C1 a C3.
 - A2. El usuario modifica los datos o los productos y pulsa "Apply Changes".
 - A3. El sistema valida los datos obligatorios.
-- A4. El sistema guarda la tienda y su inventario con los productos seleccionados, y vuelve a la página 6 con el mensaje "Inventory updated."
+- A4. El sistema guarda la tienda y actualiza su inventario: conserva los productos que siguen seleccionados, con su precio y su oferta, quita los deseleccionados y añade los nuevos sin precio de tienda ni oferta. Vuelve a la página 6 con el mensaje "Inventory updated."
 
 *Baja*
 
@@ -161,13 +162,14 @@ Se describen los casos de uso que mantienen datos o tienen reglas. Los de consul
 **Flujos alternativos**
 
 - En los puntos N4 y A3, si falta el nombre, la dirección o la ciudad, el sistema no guarda y muestra el error junto al campo.
+- En los puntos N5 y A4, si se produce un error al guardar el inventario, el sistema no guarda ningún cambio, ni de la tienda ni de su inventario, y muestra el error.
 - En el punto B3, si la tienda tiene ventas o inventario, la base de datos rechaza el borrado por sus claves ajenas, y el sistema muestra el error.
 
 **Condiciones de entrada:** el usuario está autenticado.
 
 **Condiciones de salida:** la tienda y su inventario quedan guardados o borrados.
 
-**Requisitos vinculados:** RF000.
+**Requisitos vinculados:** RF000, RF001.
 
 #### CU04 Mantenimiento de productos
 
@@ -207,8 +209,12 @@ Se describen los casos de uso que mantienen datos o tienen reglas. Los de consul
 **Reglas**
 
 - Un producto que no está en el inventario de una tienda no se vende en ella.
+- Guardar el formulario de una tienda solo cambia del inventario los productos que el usuario ha añadido o quitado (RF001).
+- Un producto que sigue en el inventario conserva su precio de tienda, su descuento y sus fechas de oferta (RF001).
+- Un producto no puede quedar dos veces en el inventario de la misma tienda al guardar el formulario (RF001).
+- Si no se selecciona ningún producto, el inventario de la tienda no cambia.
 
-**Requisitos vinculados:** RF000.
+**Requisitos vinculados:** RF000, RF001.
 
 #### CU06 Generar ventas
 
@@ -359,7 +365,7 @@ Los campos marcados con \* son obligatorios.
 | Region | No | `REGION_ID` | Lista de regiones |
 | Store Open Date | No | `STORE_OPEN_DATE` | |
 | Store Lat, Store Lng | No | `STORE_LAT`, `STORE_LNG` | |
-| Store Inventory | No | `OOW_DEMO_STORE_PRODUCTS` | Lista de selección doble con todos los productos |
+| Store Inventory | No | `OOW_DEMO_STORE_PRODUCTS` | Lista de selección doble con todos los productos. Al guardar, solo añade los productos nuevos y quita los deseleccionados (RF001) |
 
 #### 7.2.2 Formulario de producto (página 12)
 
