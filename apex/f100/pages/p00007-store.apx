@@ -668,18 +668,10 @@ page 7 (
         source {
             plsqlCode:
                 ```plsql
-                declare 
-                	l_inv apex_application_global.vc_arr2; 
-                begin 
-                	-- convert the colon separated string into an array 
-                	l_inv := apex_util.string_to_table(:P7_STORE_ITEMS);
-                
-                	delete from OOW_DEMO_STORE_PRODUCTS where store_id = :P7_ID;
-                	for i in 1..l_inv.count loop 
-                		insert into OOW_DEMO_STORE_PRODUCTS (store_id, item_id)
-                		values( :P7_ID, l_inv(i) );
-                	end loop; 
-                end;
+                -- Solo aplica las diferencias con el inventario actual (RF001)
+                oow_demo_store_pkg.save_inventory(
+                    p_store_id => :P7_ID,
+                    p_item_ids => :P7_STORE_ITEMS);
                 ```
         }
         execution {

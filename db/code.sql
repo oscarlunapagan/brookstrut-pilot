@@ -12,6 +12,7 @@
 @db/code/package_bodies/oow_demo_event_pkg.sql
 @db/code/package_bodies/oow_demo_gen_data_pkg.sql
 @db/code/package_bodies/oow_demo_sample_data.sql
+@db/code/package_bodies/oow_demo_store_pkg.sql
 @db/code/package_bodies/oow_demo_timing.sql
 @db/code/package_bodies/test_oow_demo_store_pkg.sql
 @db/code/package_bodies/test_oow_demo_triggers.sql

@@ -310,6 +310,7 @@ create or replace package body test_oow_demo_store_pkg as
 
         oow_demo_store_pkg.save_inventory(p_store_id => g_store_id, p_item_ids => l_no_items);
         oow_demo_store_pkg.save_inventory(p_store_id => g_store_id, p_item_ids => apex_t_number());
+        oow_demo_store_pkg.save_inventory(p_store_id => g_store_id, p_item_ids => apex_t_number(null));
 
         ut3.ut.expect(inventory(g_store_id)).to_equal(l_before);
     end rf001_empty_selection_keeps_inventory;

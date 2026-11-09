@@ -46,10 +46,11 @@ Tests adicionales de reglas del requisito que no tienen criterio propio:
 1. **Nombre del paquete:** `oow_demo_store_pkg`, con el prefijo del esquema y el sufijo `_pkg` como `oow_demo_gen_data_pkg` y `oow_demo_event_pkg`. Puede alojar más lógica de tiendas en el futuro.
 2. **Selección vacía:** el procedimiento no hace nada si la lista es nula o vacía. Así cumple la regla "si no se selecciona ningún producto, el inventario no cambia" aunque se llame desde otro sitio. La página conserva su condición, así que el comportamiento de la app es el mismo que hoy.
 3. **Productos repetidos en la selección:** se insertan una sola vez (regla de CU05: un producto no puede quedar dos veces en el inventario al guardar). Los valores nulos de la lista se ignoran.
-4. **Productos ya repetidos en la tienda:** el requisito excluye corregirlos. Si siguen seleccionados, se conservan todas sus filas; si se deseleccionan, se borran todas, porque el producto deja de estar en el inventario.
-5. **Atomicidad:** el procedimiento no hace `commit`. Si falla, deshace sus propios cambios con un `savepoint` y vuelve a lanzar el error, para que el inventario no quede a medias aunque quien lo llame capture la excepción. En la página, APEX deshace además el guardado de la tienda y muestra el error, como pide el flujo alternativo de CU03.
-6. **Orden de las operaciones:** primero se borran los deseleccionados y después se insertan los nuevos.
-7. **Fuera de alcance**, aunque se vea: el botón "Delete" de la página 7 sigue fallando si la tienda tiene inventario (lo describe el análisis funcional como comportamiento actual), no se toca el cálculo de precios de ventas ni del informe de rendimiento, y no se corrigen las filas repetidas de los datos de ejemplo.
+4. **Filas sin producto** (`ITEM_ID` nulo): no son un producto que se pueda deseleccionar, así que se conservan. Hoy se borraban al guardar.
+5. **Productos ya repetidos en la tienda:** el requisito excluye corregirlos. Si siguen seleccionados, se conservan todas sus filas; si se deseleccionan, se borran todas, porque el producto deja de estar en el inventario.
+6. **Atomicidad:** el procedimiento no hace `commit`. Si falla, deshace sus propios cambios con un `savepoint` y vuelve a lanzar el error, para que el inventario no quede a medias aunque quien lo llame capture la excepción. En la página, APEX deshace además el guardado de la tienda y muestra el error, como pide el flujo alternativo de CU03.
+7. **Orden de las operaciones:** primero se borran los deseleccionados y después se insertan los nuevos.
+8. **Fuera de alcance**, aunque se vea: el botón "Delete" de la página 7 sigue fallando si la tienda tiene inventario (lo describe el análisis funcional como comportamiento actual), no se toca el cálculo de precios de ventas ni del informe de rendimiento, y no se corrigen las filas repetidas de los datos de ejemplo.
 
 ## 5. Comprobación
 
