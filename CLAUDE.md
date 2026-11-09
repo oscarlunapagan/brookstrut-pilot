@@ -5,7 +5,7 @@ Aplicación Oracle APEX 26.1 de una cadena de tiendas, sobre Oracle Autonomous D
 ## Antes de empezar
 
 - **Qué hace la app:** [`docs/functional-analysis.md`](docs/functional-analysis.md). Léelo entero antes de cambiar nada.
-- **Qué hay que hacer:** el documento de requisitos de `docs/requirements/` que te indiquen. Implementa exactamente lo que dice, ni más ni menos. Lo que está en "Fuera de alcance" no se toca, aunque veas un fallo.
+- **Qué hay que hacer:** el documento de requisitos de `docs/requirements/` que te indiquen. Implementa exactamente lo que dice, ni más ni menos. Lo que el requisito excluye no se toca, aunque veas un fallo.
 - **Estructura y despliegue:** [`README.md`](README.md).
 
 ## Entorno
