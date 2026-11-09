@@ -49,7 +49,7 @@ app BROOKSTRUT (
     sessionStateProtection {
         allowUrlsCreatedAfter: 1999-08-04T00:00:00
         bookmarkHashFunction: sha1
-        checksumSalt: 37FEB2C9022D01DA387D1F55A9135263A65396CA4B2902FDAAF18B0E3E2C24DD
+        checksumSalt: 3455BB4BC186A15F84B8770920A63FB710D472ACCF8B26334245BC8747A622D4
         acceptPre202UrlChecksums: false
     }
     sessionManagement {
