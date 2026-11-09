@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Orden: migraciones de tablas, código y app -->
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <includeAll path="migrations/" relativeToChangelogFile="true"/>
+    <include file="code.sql" relativeToChangelogFile="true"/>
+    <include file="apex.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>

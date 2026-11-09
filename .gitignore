@@ -1,0 +1,5 @@
+# Salidas de SQLcl y Liquibase
+*.log
+logs/
+# Credenciales
+*.zip

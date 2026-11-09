@@ -1,0 +1,26 @@
+buildOption feature-configuration-options (
+    name: Feature: Configuration Options
+    status {
+        status: include
+    }
+    advanced {
+        featureIdentifier: APPLICATION_CONFIGURATION
+    }
+    comments {
+        comments: Allow application administrators to enable or disable specific functionality, associated with an Oracle APEX build option, from within the application.
+    }
+)
+
+buildOption feature-theme-style-selection (
+    name: Feature: Theme Style Selection
+    status {
+        status: include
+    }
+    advanced {
+        featureIdentifier: APPLICATION_THEME_STYLE_SELECTION
+    }
+    comments {
+        comments: "Allow administrators to select a default color scheme (theme style) for the application. Administrators can also choose to allow end users to choose their own theme style. "
+    }
+)
+
